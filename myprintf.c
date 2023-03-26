@@ -17,57 +17,54 @@ void _putchar(char c)
  * @format: is the string passed
  * Return: the number of characters printed
  */
-int _printf(const char *format, ...)
+int _printf(char *format, ...)
 {
-	va_list ptr;
-	int i = 0, k = 0, j = 0;
-	char ch, *str;
+	va_list ap;
+	unsigned int x;
+	char *str;
+	int len = 0, inner;
 	type_cont type;
 
-	va_start(ptr, format);
-
-	if (format == NULL)
-		return (-1);
-
-	while (format[i])
+	va_start(ap, format);
+	for (x = 0; format[x] != '\0'; x++)
 	{
-		if (format[i] == '%')
+		if (format[x] != '%')
 		{
-			i++;
-			type = type_checker(format + i);
-			switch (type.modifier)
-			{
-			case 's':
-				str = va_arg(ptr, char *);
-				for (k = 0; str[k] != '\0'; k++)
-				{
-					_putchar(str[k]);
-					j++;
-				}
-				break;
-			case 'c':
-				ch = va_arg(ptr, int);
-				_putchar(ch);
-				j++;
-				break;
-			case 'i':
-			case 'd':
-				print_number(va_arg(ap, int), &j);
-				x += type.steps;
-				break;
-				default:
-                                        _putchar(format[i]);
-                                        j++;
-                                        break;
-			}
+			len++;
+			_putchar(format[x]);
 		}
 		else
 		{
-			_putchar(format[i]);
-			j++;
+			type = type_checker(format + x);
+
+			switch (type.modifier)
+			{
+			case 'i':
+			case 'd':
+				print_number(va_arg(ap, int), &len);
+				x += type.steps;
+				break;
+			case '%':
+				_putchar('%');
+				len++;
+				x += type.steps;
+				break;
+			case 'c':
+				_putchar(va_arg(ap, int));
+				len++;
+				x += type.steps;
+				break;
+			case 's':
+				for (inner = 0; str[inner] != '\0'; inner++)
+				{
+					_putchar(str[inner]);
+					len++;
+				}
+			default:
+				exit(78);
+			}
 		}
-	i++;
 	}
-	va_end(ptr);
-	return (j);
+	va_end(ap);
+	return (len);
 }
