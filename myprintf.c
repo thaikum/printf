@@ -22,6 +22,7 @@ int _printf(const char *format, ...)
 	va_list ptr;
 	int i = 0, k = 0, j = 0;
 	char ch, *str;
+	type_cont type;
 
 	va_start(ptr, format);
 
@@ -33,21 +34,27 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			switch (format[i])
+			type = type_checker(format + i);
+			switch (type.modifier)
 			{
-				case 's':
-					str = va_arg(ptr, char *);
-					for (k = 0; str[k] != '\0'; k++)
-					{
-						_putchar(str[k]);
-						j++;
-					}
-					break;
-				case 'c':
-					ch = va_arg(ptr, int);
-					_putchar(ch);
+			case 's':
+				str = va_arg(ptr, char *);
+				for (k = 0; str[k] != '\0'; k++)
+				{
+					_putchar(str[k]);
 					j++;
-					break;
+				}
+				break;
+			case 'c':
+				ch = va_arg(ptr, int);
+				_putchar(ch);
+				j++;
+				break;
+			case 'i':
+			case 'd':
+				print_number(va_arg(ap, int), &j);
+				x += type.steps;
+				break;
 				default:
                                         _putchar(format[i]);
                                         j++;
