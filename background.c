@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+
 /**
  * print_number - prints a number to the screen
  * @num: the number to print
@@ -8,15 +9,16 @@
 void print_number(int num, int *len)
 {
 	(*len)++;
-
-	if (num / 10 == 0 || num == 0)
+	if (num < 0)
 	{
-		_putchar('0' + num % 10);
-		return;
+		_putchar('-');
+		num = -num;
 	}
 
-	print_number(num / 10, len);
-	_putchar('0' + num % 10);
+	if (num / 10)
+		print_number(num / 10, len);
+
+	_putchar(num % 10 + '0');
 }
 
 /**
