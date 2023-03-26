@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdio.h>
+#include <stdlib.h>
 /**
  * print_number - prints a number to the screen
  * @num: the number to print
@@ -26,7 +26,7 @@ void print_number(int num, int *len)
  *	first being the steps to the type modifier
  *	second being the type modifier itself
  */
-type_cont type_checker(char *str)
+type_cont type_checker(const char *str)
 {
 	char current_types[] = "%idcs";
 	int x = 1, y;

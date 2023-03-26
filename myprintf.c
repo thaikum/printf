@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 /**
  * _putchar - prints a single chrarcter
@@ -17,7 +18,7 @@ void _putchar(char c)
  * @format: is the string passed
  * Return: the number of characters printed
  */
-int _printf(char *format, ...)
+int _printf(const char *format, ...)
 {
 	va_list ap;
 	unsigned int x;
@@ -55,11 +56,13 @@ int _printf(char *format, ...)
 				x += type.steps;
 				break;
 			case 's':
+				str = va_arg(ap, char *);
 				for (inner = 0; str[inner] != '\0'; inner++)
 				{
 					_putchar(str[inner]);
 					len++;
 				}
+				break;
 			default:
 				exit(78);
 			}

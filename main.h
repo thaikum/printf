@@ -13,5 +13,5 @@ typedef struct type_cont
 int _printf(const char *format, ...);
 void _putchar(char c);
 void print_number(int num, int *len);
-type_cont type_checker(char *str);
+type_cont type_checker(const char *str);
 #endif
