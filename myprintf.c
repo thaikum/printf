@@ -18,13 +18,14 @@ void _putchar(char c)
  * @format: is the string passed
  * Return: the number of characters printed
  */
-int _printf(const char *format, ...)
+int _printf(char *format, ...)
 {
 	va_list ap;
 	unsigned int x;
 	char *str;
 	int len = 0, inner;
 	type_cont type;
+
 
 	va_start(ap, format);
 	for (x = 0; format[x] != '\0'; x++)
@@ -57,11 +58,12 @@ int _printf(const char *format, ...)
 				break;
 			case 's':
 				str = va_arg(ap, char *);
-				for (inner = 0; str[inner] != '\0'; inner++)
+				for (inner = 0; str[inner]; inner++)
 				{
 					_putchar(str[inner]);
 					len++;
 				}
+				x++;
 				break;
 			default:
 				return (-0);
