@@ -41,7 +41,7 @@ int match(const char *format, va_list ptr)
 				}
 				else
 				{
-					exit(90);
+					return (-1);
 				}
 			}
 		}
