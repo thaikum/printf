@@ -18,7 +18,7 @@ void _putchar(char c)
  * @format: is the string passed
  * Return: the number of characters printed
  */
-int _printf(char *format, ...)
+int _printf(const char *format, ...)
 {
 	va_list ap;
 	unsigned int x;
