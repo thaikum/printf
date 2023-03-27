@@ -40,4 +40,5 @@ int print_integer(va_list ap);
 void print_number(long number, int *len);
 specifier type_checker(const char *);
 int match(const char *s, va_list ptr);
+int int_to_binary(va_list ptr);
 #endif

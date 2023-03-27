@@ -15,3 +15,14 @@ int print_integer(va_list ap)
 	print_number(k, &len);
 	return (len);
 }
+
+/**
+ * int_to_binary - converts unsigned int to binary
+ * @ptr: is argument pointer.
+ *
+ * return: number of items printed
+ */
+int int_to_binary(va_list ptr)
+{
+	int 
+}
