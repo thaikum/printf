@@ -42,10 +42,12 @@ type_cont type_checker(const char *str)
 			{
 				t.steps = x;
 				t.modifier = str[x];
-				return t;
+				return (t);
 			}
 		}
 		x++;
 	}
-	exit(98);
+	t.steps = 1;
+	t.modifier = '';
+	return (t);
 }

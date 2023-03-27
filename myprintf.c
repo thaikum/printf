@@ -64,7 +64,7 @@ int _printf(const char *format, ...)
 				}
 				break;
 			default:
-				exit(78);
+				return (-0);
 			}
 		}
 	}
