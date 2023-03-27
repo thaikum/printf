@@ -11,6 +11,7 @@ void print_number(int num, int *len)
 	(*len)++;
 	if (num < 0)
 	{
+		(*len)++;
 		_putchar('-');
 		num = -num;
 	}

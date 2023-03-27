@@ -23,11 +23,11 @@ int main(void)
 
 	len = _printf("Character:[%c]\n", 'H');
 	len2 = printf("Character:[%c]\n", 'H');
-	printf("Length:[%d, %i]\n", len, len2);
+	printf("Length:[%d, %i]\n", len1, len2);
 
 	len = _printf("String:[%s]\n", "I am a string !");
 	len2 = printf("String:[%s]\n", "I am a string !");
-	printf("Length:[%d, %i]\n", len, len2);
+	printf("Length:[%d, %i]\n", len1, len2);
 
 	len = _printf("Percent:[%%]\n");
 	len2 = printf("Percent:[%%]\n");
