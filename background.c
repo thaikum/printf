@@ -21,6 +21,7 @@ void print_number(int num, int *len)
 	_putchar(num % 10 + '0');
 }
 
+
 /**
  * type_checker - checks which type to consider
  * @str: the string with the starting point as a %
@@ -28,26 +29,23 @@ void print_number(int num, int *len)
  *	first being the steps to the type modifier
  *	second being the type modifier itself
  */
-type_cont type_checker(const char *str)
+specifier type_checker(const char *str)
 {
-	char current_types[] = "%idcs";
 	int x = 1, y;
-	type_cont t;
+	specifier mod[] = {{'c', printch, 1}, {'s', print_string, 1},
+			   {'d', print_integer, 1}, {'i', print_integer, 1},
+			   {'\0', NULL, 0}};
 
 	while (str[x])
 	{
-		for (y = 0; y < 5; y++)
-		{
-			if (str[x] == current_types[y])
+		for (y = 0; mod[y].spec; y++)
+			if (str[x] == mod[y].spec)
 			{
-				t.steps = x;
-				t.modifier = str[x];
-				return (t);
+				mod[y].steps = x;
+				return (mod[y]);
 			}
-		}
 		x++;
 	}
-	t.steps = 1;
-	t.modifier = '\0';
-	return (t);
+
+	return (mod[y]);
 }
