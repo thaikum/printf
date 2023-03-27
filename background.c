@@ -6,7 +6,7 @@
  * @num: the number to print
  * @len: to monitor the lenght of the characters printed
  */
-void print_number(int num, int *len)
+void print_number(long num, int *len)
 {
 	(*len)++;
 	if (num < 0)
