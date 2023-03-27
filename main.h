@@ -19,6 +19,7 @@ typedef struct type_cont
  * struct type -a struct
  * @spec: is modifier character e.g c, d, i, s, etc
  * @fun: function pointer to the function to execute the print functionality.
+ * @steps: steps for the typechecker *shouldnt be here though
  */
 typedef struct type
 {
