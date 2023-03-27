@@ -48,6 +48,6 @@ type_cont type_checker(const char *str)
 		x++;
 	}
 	t.steps = 1;
-	t.modifier = '';
+	t.modifier = '\0';
 	return (t);
 }
