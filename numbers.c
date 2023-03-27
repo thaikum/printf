@@ -22,7 +22,4 @@ int print_integer(va_list ap)
  *
  * return: number of items printed
  */
-int int_to_binary(va_list ptr)
-{
-	int 
-}
+

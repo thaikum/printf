@@ -21,9 +21,6 @@ int print_string(va_list ptr)
 	char *str;
 
 	str = va_arg(ptr, char *);
-	
-	if (str == NULL)
-		str = ("null");
 
 	for (k = 0; str[k] != '\0'; k++)
 	{

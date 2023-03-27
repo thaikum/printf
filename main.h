@@ -37,7 +37,7 @@ int print_string(va_list ptr);
 int printch(va_list ptr);
 int print_integer(va_list ap);
 
-void print_number(long number, int *len);
+void print_number(int number, int *len);
 specifier type_checker(const char *);
 int match(const char *s, va_list ptr);
 int int_to_binary(va_list ptr);
