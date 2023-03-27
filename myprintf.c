@@ -13,6 +13,7 @@ int _printf(const char *format, ...)
 	specifier mod[] = {
 		{"c", printch},
 		{"s", mystring},
+		{"b", int_to_bin},
 		{NULL, NULL}
 	};
 

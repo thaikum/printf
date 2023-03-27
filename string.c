@@ -46,3 +46,30 @@ int printch(va_list ptr)
 
 	return (j);
 }
+
+/**
+ * int_to_bin -converts unsigned int to binary
+ * @ptr: argument pointer to arguments list
+ * Return: number of items printed
+ */
+int int_to_bin(va_list ptr)
+{
+	unsigned int n = 0;
+	int i = 0, j = 0;
+	int binary[40];
+	
+	n = va_arg(ptr, unsigned int);
+
+	while(n > 0)
+	{
+		binary[i] = (n % 2);
+		n = n / 2;
+		i++;
+	}
+
+	for(j = i - 1; j >= 0; j--)
+	{
+		_putchar('0' + binary[j]);
+	}
+	return (i);
+}

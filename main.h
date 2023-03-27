@@ -19,4 +19,5 @@ void _putchar(char c);
 int mystring(va_list ptr);
 int printch(va_list ptr);
 int match(const char *s, specifier mod[], va_list ptr);
+int int_to_bin(va_list ptr);
 #endif
