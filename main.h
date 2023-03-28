@@ -11,8 +11,11 @@
 typedef struct type_cont
 {
 	int steps;
-	char modifier;
-} type_cont;
+	char *(*fun)(va_list ap);
+	int precision_flag:
+	int width_flag;
+	int precision_count;
+} type_flags;
 
 
 /**
@@ -24,8 +27,7 @@ typedef struct type_cont
 typedef struct type
 {
 	char spec;
-	int (*fun)(va_list pt);
-	int steps;
+	char *(*fun)(va_list pt);
 } specifier;
 
 
@@ -40,4 +42,14 @@ int print_integer(va_list ap);
 void print_number(long number, int *len);
 specifier type_checker(const char *);
 int match(const char *s, va_list ptr);
+
+void *alloc_init(int size);
+void int_to_str(long num, char *str,int *cur_ind);
+int string_size(char *str);
+char *reverse_string(char *str);
+char *to_str(long num);
+char *_puts(char *str);
+int print_preceded_by_spaces(int spaces, char *str, int for_precision);
+int print_suceeded_by_spaces(int spaces, char *str);
+char *rot13(char *str);
 #endif
