@@ -41,4 +41,6 @@ void print_number(int number, int *len);
 specifier type_checker(const char *);
 int match(const char *s, va_list ptr);
 int int_to_binary(va_list ptr);
+int base_len(unsigned int n, unsigned int base);
+char *revstr(char *s);
 #endif
