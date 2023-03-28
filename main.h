@@ -37,7 +37,13 @@ int print_string(va_list ptr);
 int printch(va_list ptr);
 int print_integer(va_list ap);
 int int_to_binary(va_list list);
+int printoct(va_list list);
+int print_heX(va_list ptr);
+int print_hexalower(va_list ptr);
+int printadd(va_list ptr);
+int print_UNS(va_list ptr);
 
+int print_unsgined_number(unsigned int n);
 void print_number(int number, int *len);
 specifier type_checker(const char *);
 int match(const char *s, va_list ptr);

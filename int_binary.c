@@ -4,7 +4,7 @@
 
 /**
  * int_to_binary - converts unsigned int to binary
- * @ptr: is argument pointer.
+ * @list: is an argument pointer.
  *
  * Return: number of items printed
  */

@@ -35,7 +35,9 @@ specifier type_checker(const char *str)
 	int x = 1, y;
 	specifier mod[] = {{'c', printch, 1}, {'s', print_string, 1},
 			   {'d', print_integer, 1}, {'i', print_integer, 1},
-			   {'b', int_to_binary, 1},
+			   {'b', int_to_binary, 1}, {'o', printoct, 1},
+			   {'p', print_hexalower, 1}, {'u', print_UNS, 1},
+			   {'X', print_heX, 1}, {'x', print_hexalower, 1},
 			   {'\0', NULL, 0}};
 
 	while (str[x])
