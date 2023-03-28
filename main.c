@@ -21,6 +21,14 @@ int main(void)
         len2 = printf("Negative:[%d]\n", INT_MAX);
         _printf("Length:[%d, %i]\n", len, len2);
 
+	len = _printf("Formated:[%*d]\n", 6, 3);
+        len2 = printf("Formated:[%*d]\n", 6, 3);
+        _printf("Length:[%d, %i]\n", len, len2);
+
+	len = _printf("Precision:[%.3d]\n", 3);
+        len2 = printf("Precision:[%.3d]\n", 3);
+        _printf("Length:[%d, %i]\n", len, len2);
+
 	len = _printf("Character:[%c]\n", '\0');
 	len2 = printf("Character:[%c]\n", '\0');
 	printf("Length:[%d, %i]\n", len, len2);
@@ -29,7 +37,8 @@ int main(void)
 	len2 = printf("String:[%s]\n", "I am a string !");
 	printf("Length:[%d, %i]\n", len, len2);
 
-	len = _printf("Percent:[%%]\n");
+
+        len = _printf("Percent:[%%]\n");
 	len2 = printf("Percent:[%%]\n");
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);

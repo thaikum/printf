@@ -12,9 +12,11 @@ typedef struct type_cont
 {
 	int steps;
 	char *(*fun)(va_list ap);
-	int precision_flag:
+	int precision_flag;
+	int precision;
 	int width_flag;
-	int precision_count;
+	int width;
+	int hyphene_flag;
 } type_flags;
 
 
@@ -35,12 +37,12 @@ int _printf(const char *format, ...);
 
 void _putchar(char c);
 
-int print_string(va_list ptr);
-int printch(va_list ptr);
-int print_integer(va_list ap);
+char *print_string(va_list ptr);
+char *printch(va_list ptr);
+char *print_integer(va_list ap);
 
 void print_number(long number, int *len);
-specifier type_checker(const char *);
+type_flags type_checker(const char *);
 int match(const char *s, va_list ptr);
 
 void *alloc_init(int size);
@@ -48,8 +50,9 @@ void int_to_str(long num, char *str,int *cur_ind);
 int string_size(char *str);
 char *reverse_string(char *str);
 char *to_str(long num);
-char *_puts(char *str);
-int print_preceded_by_spaces(int spaces, char *str, int for_precision);
-int print_suceeded_by_spaces(int spaces, char *str);
+void _puts(char *str);
+char *string_preceded_by_spaces(int spaces, char *str, int for_precision);
+char *string_succeeded_by_spaces(int spaces, char *str);
 char *rot13(char *str);
+char *flags_handler(char *str, type_flags flags);
 #endif

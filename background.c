@@ -26,27 +26,44 @@ void print_number(long num, int *len)
 /**
  * type_checker - checks which type to consider
  * @str: the string with the starting point as a %
- * Return: an array of two integers.
- *	first being the steps to the type modifier
- *	second being the type modifier itself
+ * Return: flags struct with steps taken and all the flags handled
  */
-specifier type_checker(const char *str)
+type_flags type_checker(const char *str)
 {
 	int x = 1, y;
-	specifier mod[] = {{'c', printch, 1}, {'s', print_string, 1},
-			   {'d', print_integer, 1}, {'i', print_integer, 1},
-			   {'\0', NULL, 0}};
+	specifier mod[] = {{'c', printch}, {'s', print_string},
+			   {'d', print_integer}, {'i', print_integer},
+			   {'\0', NULL}};
+	type_flags flags = {1, NULL, 0, 0, 0, 0, 0};
 
 	while (str[x])
 	{
-		for (y = 0; mod[y].spec; y++)
-			if (str[x] == mod[y].spec)
-			{
-				mod[y].steps = x;
-				return (mod[y]);
-			}
+		switch (str[x])
+		{
+		case '*':
+			flags.width_flag = 1;
+			break;
+		case '.':
+			flags.precision_flag = 1;
+			break;
+		case '-':
+			flags.hyphene_flag = 1;
+			break;
+		default:
+			for (y = 0; mod[y].spec; y++)
+				if (str[x] == mod[y].spec)
+				{
+					flags.fun = mod[y].fun;
+					flags.steps = x;
+					return (flags);
+				}
+			if (flags.precision_flag &&
+			    str[x] >= '0' && str[x] <= '9')
+				flags.precision =
+					flags.precision * 10 + str[x] - '0';
+		}
 		x++;
 	}
 
-	return (mod[y]);
+	return (flags);
 }

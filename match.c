@@ -11,7 +11,8 @@
 int match(const char *format, va_list ptr)
 {
 	int i = 0, len = 0;
-	specifier spc;
+	char *variable_string;
+	type_flags flags;
 
 	if (format == NULL)
 		return (-1);
@@ -32,17 +33,22 @@ int match(const char *format, va_list ptr)
 			}
 			else
 			{
-				spc = type_checker(format + i);
-
-				if (spc.fun != NULL)
+				flags = type_checker(format + i);
+				if (flags.fun != NULL)
 				{
-					i += spc.steps;
-					len += spc.fun(ptr);
+					i += flags.steps;
+					if (flags.width_flag)
+						flags.width = va_arg(ptr, int);
+					variable_string = flags.fun(ptr);
+					variable_string =
+						flags_handler(variable_string,
+							      flags);
+					len += string_size(variable_string);
+					_puts(variable_string);
+					free(variable_string);
 				}
 				else
-				{
 					return (-1);
-				}
 			}
 		}
 		i++;

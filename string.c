@@ -1,6 +1,7 @@
 #include <stdarg.h>
 #include "main.h"
 #include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
 /**
  * _putchar - prints one chararcter
@@ -13,22 +14,18 @@ void _putchar(char c)
 /**
  * print_string - prints string.
  * @ptr: argument pointer
- * Return: number of strings printed
+ * Return: a string from ptr
  */
-int print_string(va_list ptr)
+char *print_string(va_list ptr)
 {
-	int l = 0, k = 0;
-	char *str;
+	char *temp_string, *str = malloc(100 * sizeof(char));
+	int index;
 
-	str = va_arg(ptr, char *);
-	for (k = 0; str[k] != '\0'; k++)
-	{
-		_putchar(str[k]);
-		l++;
-	}
-	if (str == NULL)
-		str = ("null");
-	return (l);
+	temp_string = va_arg(ptr, char *);
+	for (index = 0; temp_string[index]; index++)
+		str[index] = temp_string[index];
+
+	return (str);
 }
 
 /**
@@ -36,14 +33,13 @@ int print_string(va_list ptr)
  * @ptr: argument pointer
  * Return: number if character printed
  */
-int printch(va_list ptr)
+char *printch(va_list ptr)
 {
-	int j = 0;
 	char ch;
+	char *result = malloc(2 * sizeof(char));
 
 	ch = va_arg(ptr, int);
-	_putchar(ch);
-	j++;
+	result[0] = ch;
 
-	return (j);
+	return (result);
 }
