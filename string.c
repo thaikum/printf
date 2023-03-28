@@ -19,6 +19,7 @@ int print_string(va_list ptr)
 {
 	int l = 0, k = 0;
 	char *str;
+	char *strNULL = "(null)";
 
 	str = va_arg(ptr, char *);
 
@@ -27,17 +28,13 @@ int print_string(va_list ptr)
 		_putchar(str[k]);
 		l++;
 	}
+
 	if (str == NULL)
-		str = ("null");
+		for (k = 0; strNULL[k] != '\0'; k++)
+		{
+			_putchar(strNULL[k]);
+			l++;
+		}
+
 	return (l);
-}
-/**
- * printch - prints a character
- * @ptr: argument pointer
- * Return: number if character printed
- */
-int printch(va_list ptr)
-{
-	_putchar(va_arg(ptr, int));
-	return (1);
 }
