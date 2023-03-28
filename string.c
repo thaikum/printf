@@ -17,7 +17,7 @@ void _putchar(char c)
  */
 int print_string(va_list ptr)
 {
-	int l = 0, k = 0;
+	int k;
 	char *str;
 	char *strNULL = "(null)";
 
@@ -26,15 +26,13 @@ int print_string(va_list ptr)
 	for (k = 0; str[k] != '\0'; k++)
 	{
 		_putchar(str[k]);
-		l++;
 	}
 
 	if (str == NULL)
 		for (k = 0; strNULL[k] != '\0'; k++)
 		{
 			_putchar(strNULL[k]);
-			l++;
 		}
 
-	return (l);
+	return (k);
 }
