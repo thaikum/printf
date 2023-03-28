@@ -8,41 +8,38 @@
  *
  * Return: number of items printed
  */
-int int_to_binary(va_list ptr)
+int int_to_binary(va_list list)
 {
-	int i, len = 0, count = 0;
-	char *binary;
+	unsigned int num;
+	int i, len;
+	char *str;
+	char *rev_str;
 
-	unsigned int num = va_arg(ptr, unsigned int);
-
+	num = va_arg(list, unsigned int);
 	if (num == 0)
 		return (0);
+	if (num < 1)
+		return (-1);
 	len = base_len(num, 2);
-	binary = malloc(sizeof(unsigned int) * len);
-	if (binary == NULL)
-	{
-		free(binary);
-		return (0);
-	}
-	if (num == 0)
-	{
-		_putchar(0 + '0');
-		free(binary);
-		return (1);
-	}
+	str = malloc(sizeof(char) * len + 1);
+	if (str == NULL)
+		return (-1);
+
 	for (i = 0; num > 0; i++)
 	{
-		binary[i] = num % 2;
+		if (num % 2 == 0)
+			str[i] = '0';
+		else
+			str[i] = '1';
 		num = num / 2;
 	}
-	count = i;
-
-	binary[i] = '\0';
-
-	for (i = len - 1; i > 0; i--)
-	{
-		_putchar(binary[i] + '0');
-	}
-	free(binary);
-	return (count);
+	str[i] = '\0';
+	rev_str = rev_string(str);
+	if (rev_str == NULL)
+		return (-1);
+	for (i = 0; rev_str[i] != '\0'; i++)
+		_putchar(rev_str[i]);
+	free(str);
+	free(rev_str);
+	return (len);
 }

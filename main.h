@@ -36,10 +36,12 @@ void _putchar(char c);
 int print_string(va_list ptr);
 int printch(va_list ptr);
 int print_integer(va_list ap);
+int int_to_binary(va_list list);
 
 void print_number(int number, int *len);
 specifier type_checker(const char *);
 int match(const char *s, va_list ptr);
-int int_to_binary(va_list ptr);
 int base_len(unsigned int n, unsigned int base);
+char *_memcpy(char *dest, char *src, unsigned int n);
+char *rev_string(char *s);
 #endif
