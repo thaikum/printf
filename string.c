@@ -17,21 +17,21 @@ void _putchar(char c)
  */
 int print_string(va_list ptr)
 {
-        int k;
-        char *strNULL = "(null)";
-        char *str = va_arg(ptr, char *);
+	int k;
+	char *strNULL = "(null)";
+	char *str = va_arg(ptr, char *);
 
-        if (str == NULL)
-        {
-                for (k = 0; strNULL[k] != '\0'; k++)
-                {
-                        _putchar(strNULL[k]);
-                }
-        }
+	if (str == NULL)
+	{
+		for (k = 0; strNULL[k] != '\0'; k++)
+		{
+			_putchar(strNULL[k]);
+		}
+	}
 	else
 	{
 		for (k = 0; str[k] != '\0'; k++)
 			_putchar(str[k]);
 	}
-        return (k);
+	return (k);
 }
