@@ -29,10 +29,11 @@ int print_string(va_list ptr)
 	}
 
 	if (str == NULL)
+	{
 		for (k = 0; strNULL[k] != '\0'; k++)
 		{
 			_putchar(strNULL[k]);
 		}
-
+	}
 	return (k);
 }
